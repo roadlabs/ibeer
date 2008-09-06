@@ -12,3 +12,4 @@ Ce qu'il reste à faire:
   * Travailler un peu les question
   * Ergonomie et design
   * Validation JS
+  * Je veux que les résultats soient aussi envoyés par mail (pour avoir une copie)
