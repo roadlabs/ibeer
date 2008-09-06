@@ -9,7 +9,7 @@ http://ibeer.arielmaor.com/
 
 Quand le questionnaire est posté, les résultats sont enregistrés dans une base de données Access.
 Ce qu'il reste à faire:
-  * Travailler un peu les question
+  * Travailler un peu les questions
   * Ergonomie et design
   * Validation JS
   * Je veux que les résultats soient aussi envoyés par mail (pour avoir une copie)
