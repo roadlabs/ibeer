@@ -1,7 +1,14 @@
-Le questionnaire de test se trouve dans vos google docs sous le nom *iBeer form* :
+#summary iBeer Questionnaire
 
-http://docs.google.com
+= Introduction =
 
-_ Je ne crois pas qu'il y est une adresse commune vu que c'est private... si il y en a une mettez la ici _
+Le qustionnaire se trouve à l'adresse:
+http://ibeer.arielmaor.com/
 
-Si vous avez des commentaires,  des suggestions, allez-y : 
+= Details =
+
+Quand le questionnaire est posté, les résultats sont enregistrés dans une base de données Access.
+Ce qu'il reste à faire:
+  * Travailler un peu les question
+  * Ergonomie et design
+  * Validation JS
