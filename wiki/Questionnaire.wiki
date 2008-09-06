@@ -13,3 +13,4 @@ Ce qu'il reste à faire:
   * Ergonomie et design
   * Validation JS
   * Je veux que les résultats soient aussi envoyés par mail (pour avoir une copie)
+  * Il faut ajouter une page de retour pour remercier l'internaute (affichée après le post)
