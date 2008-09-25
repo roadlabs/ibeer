@@ -7,6 +7,11 @@ import java.io.Serializable;
  */
 public class OrderLine implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3151196895710457340L;
+
 	private int quantity;
 
 	private double priceAtBuy;

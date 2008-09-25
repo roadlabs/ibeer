@@ -7,6 +7,11 @@ import java.util.Date;
  */
 public class Product implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5256365839879279605L;
+
 	private Format format = null;
 
 	private Beer beer = null;

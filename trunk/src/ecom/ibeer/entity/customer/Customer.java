@@ -8,6 +8,11 @@ import ecom.ibeer.entity.Address;
  */
 public class Customer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2289308495016380374L;
+
 	private String lastName;
 
 	private String firstName;

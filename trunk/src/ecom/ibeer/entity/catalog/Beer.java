@@ -5,6 +5,11 @@ import java.util.Collection;
 
 public class Beer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5375703535249391646L;
+
 	private BeerCountry beerCountry = null;
 
 	private BeerType beerType = null;
