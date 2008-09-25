@@ -9,6 +9,11 @@ import java.util.Collection;
 public class Format implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3239749668881956785L;
+
+	/**
 	 * Describe in a string this selling format.
 	 */
 	private String description;

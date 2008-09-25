@@ -10,6 +10,11 @@ import ecom.ibeer.entity.Address;
  */
 public class Order implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8046227351655231729L;
+
 	private Date orderDate;
 
 	private Collection<OrderLine> orderLines = null;

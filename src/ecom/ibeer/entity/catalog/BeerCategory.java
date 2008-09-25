@@ -2,11 +2,15 @@ package ecom.ibeer.entity.catalog;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Iterator;
 
 /** 
  */
 public class BeerCategory implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8684790511763962409L;
 
 	private Collection<Beer> beers;
 

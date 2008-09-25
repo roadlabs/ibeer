@@ -7,6 +7,11 @@ import java.util.Collection;
  */
 public class BeerCountry implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 85511991475505961L;
+
 	private Collection<Beer> beers;
 
 	private String name;
