@@ -3,29 +3,54 @@ package ecom.ibeer.entity.catalog;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Beer implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5375703535249391646L;
-
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;	
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beerContry_fk", nullable = false)
 	private BeerCountry beerCountry = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beerType_fk", nullable = false)
 	private BeerType beerType = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beerBrand_fk", nullable = false)
 	private BeerBrand beerBrand = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beerCategory_fk", nullable = false)
 	private BeerCategory beerCategory = null;
 
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<Product> products;
 
 	private double alcohol;
 
+	@Column(length = 100)
 	private String description;
 
+	@Column(length = 150)
 	private String picture;
 
+	@Column(nullable = false, length = 70)
 	private String name;
 
 	/**
@@ -215,6 +240,14 @@ public class Beer implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

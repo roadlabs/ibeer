@@ -3,19 +3,31 @@ package ecom.ibeer.entity.catalog;
 import java.io.Serializable;
 import java.util.Collection;
 
-/** 
- */
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class BeerCountry implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 85511991475505961L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
+	
+    @OneToMany(mappedBy = "beerCountry", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Beer> beers;
 
+    @Column(nullable = false, length = 30)
 	private String name;
 
+    @Column(length = 150)
 	private String flag;
 
 	/**
@@ -79,6 +91,14 @@ public class BeerCountry implements Serializable {
 	 */
 	public void setFlag(String flag) {
 		this.flag = flag;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

@@ -3,27 +3,43 @@ package ecom.ibeer.entity.catalog;
 import java.io.Serializable;
 import java.util.Date;
 
-/** 
- */
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class Product implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5256365839879279605L;
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "format_fk", nullable = false)
 	private Format format = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beer_fk", nullable = false)
 	private Beer beer = null;
 
-	private String sellPrice;
+	private double sellPrice;
 
 	private double buyPrice;
 
 	private int stock;
 
+	@Temporal(TemporalType.DATE)
 	private Date creationDate;
 
+	@Temporal(TemporalType.DATE)
 	private Date modificationDate;
 
 	private double weight;
@@ -139,7 +155,7 @@ public class Product implements Serializable {
 	 * @return Returns the sellPrice.
 	 * 
 	 */
-	public String getSellPrice() {
+	public double getSellPrice() {
 		return sellPrice;
 	}
 
@@ -150,7 +166,7 @@ public class Product implements Serializable {
 	 *            The sellPrice to set.
 	 * 
 	 */
-	public void setSellPrice(String sellPrice) {
+	public void setSellPrice(double sellPrice) {
 		this.sellPrice = sellPrice;
 	}
 
@@ -194,6 +210,14 @@ public class Product implements Serializable {
 	 */
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
