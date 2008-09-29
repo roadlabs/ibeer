@@ -15,6 +15,10 @@ public class Order implements Serializable {
 	 */
 	private static final long serialVersionUID = -8046227351655231729L;
 	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
+	
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 	
