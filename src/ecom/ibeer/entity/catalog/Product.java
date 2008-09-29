@@ -29,18 +29,6 @@ public class Product implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "beer_fk", nullable = false)
 	private Beer beer = null;
-    
-    /*
-     * The link of table OrderLine
-     * Added by Tianyi
-     * start
-     * */
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product", nullable = false)
-	private OrderLine orderLine = null;
-    /*
-     * finish
-     * */
 
 	private double sellPrice;
 
