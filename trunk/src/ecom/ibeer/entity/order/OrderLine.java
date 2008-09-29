@@ -12,6 +12,10 @@ public class OrderLine implements Serializable {
 	 */
 	private static final long serialVersionUID = 3151196895710457340L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
+    
 	private int quantity;
 
 	private double priceAtBuy;
