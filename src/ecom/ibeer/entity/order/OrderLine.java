@@ -24,12 +24,12 @@ public class OrderLine implements Serializable {
     @Column(nullable = false)
 	private double priceAtBuy;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "product_fk", nullable = false)
 	private Product product = null;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderLines", nullable = false)
+    @JoinColumn(name = "orderLines_fk", nullable = false)
 	private Order order = null;
 
 	private int state;

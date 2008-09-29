@@ -25,12 +25,12 @@ public class Customer implements Serializable {
 	@Column(nullable = false, length = 20)
 	private String firstName;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerAddress_fk", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "address_fk", nullable = false)
 	private Address address = null;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerWishList_fk")
+    @JoinColumn(name = "wishList_fk")
 	private WishList wishList = null;
 
 	/**

@@ -28,7 +28,7 @@ public class Order implements Serializable {
     @JoinColumn(name = "customer_fk", nullable = false)
 	private Customer customer = null;
     
-	@OneToMany(mappedBy = "orderLines_fk", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "orderLines", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<OrderLine> orderLines = null;
 
 	private int state;
