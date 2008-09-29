@@ -10,15 +10,23 @@ public class Address implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4757308364712448492L;
-
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
+    
 	private int number;
-
+	
+	@Column(length = 20)
 	private String street;
 
+	@Column(length = 7)
 	private String zipcode;
 
+	@Column(length = 30)
 	private String city;
 
+	@Column(length = 20)
 	private String country;
 
 	/**
