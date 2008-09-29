@@ -13,6 +13,8 @@ public class WishList implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -9181454749991066506L;
+	
+	@OneToMany(mappedBy = "customerWishList", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<Product> products;
 
 	/**

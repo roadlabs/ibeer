@@ -12,13 +12,23 @@ public class Customer implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2289308495016380374L;
-
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)	
+	private long id;
+    
+	@Column(nullable = false, length = 20)
 	private String lastName;
-
+	
+	@Column(nullable = false, length = 20)
 	private String firstName;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customerAddress_fk", nullable = false)
 	private Address address = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customerWishList_fk", nullable = false)
 	private WishList wishList = null;
 
 	/**
