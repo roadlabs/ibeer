@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /** 
  */
+@Entity
+@Table(name="Address")
 public class Address implements Serializable {
 
 	/**
@@ -15,18 +17,19 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)	
 	private long id;
     
+    @Column(nullable = false)
 	private int number;
 	
-	@Column(length = 20)
+	@Column(nullable = false, length = 20)
 	private String street;
 
-	@Column(length = 7)
+	@Column(nullable = false, length = 7)
 	private String zipcode;
 
-	@Column(length = 30)
+	@Column(nullable = false, length = 30)
 	private String city;
 
-	@Column(length = 20)
+	@Column(nullable = false, length = 20)
 	private String country;
 
 	/**

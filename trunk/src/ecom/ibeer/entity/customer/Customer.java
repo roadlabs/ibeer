@@ -6,6 +6,8 @@ import ecom.ibeer.entity.Address;
 
 /** 
  */
+@Entity
+@Table(name="Customer")
 public class Customer implements Serializable {
 
 	/**
@@ -23,12 +25,12 @@ public class Customer implements Serializable {
 	@Column(nullable = false, length = 20)
 	private String firstName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerAddress_fk", nullable = false)
 	private Address address = null;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerWishList_fk", nullable = false)
+    @JoinColumn(name = "customerWishList_fk")
 	private WishList wishList = null;
 
 	/**

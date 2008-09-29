@@ -8,6 +8,8 @@ import ecom.ibeer.entity.Address;
 
 /** 
  */
+@Entity
+@Table(name="Order")
 public class Order implements Serializable {
 
 	/**
@@ -20,9 +22,13 @@ public class Order implements Serializable {
 	private long id;
 	
 	@Temporal(TemporalType.DATE)
-	private Date orderDate;
+	private Date orderDate = null;
 	
-	@OneToMany(mappedBy = "orderLines", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_fk", nullable = false)
+	private Customer customer = null;
+    
+	@OneToMany(mappedBy = "orderLines_fk", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<OrderLine> orderLines = null;
 
 	private int state;
@@ -30,8 +36,8 @@ public class Order implements Serializable {
 	@Column(length = 8)
 	private String totalPrice;
 	
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderAddress_fk", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_fk", nullable = false)
 	private Address address = null;
 
 	/**
