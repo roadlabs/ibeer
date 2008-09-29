@@ -16,8 +16,12 @@ public class OrderLine implements Serializable {
 
 	private double priceAtBuy;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderLineProduct_fk", nullable = false)
 	private Product product = null;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderLineOrder_fk", nullable = false)
 	private Order order = null;
 
 	private int state;
