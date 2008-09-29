@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 /** 
  */
+@Entity
+@Table(name="OrderLine")
 public class OrderLine implements Serializable {
 
 	/**
@@ -16,16 +18,18 @@ public class OrderLine implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)	
 	private long id;
     
+    @Column(nullable = false)
 	private int quantity;
 
+    @Column(nullable = false)
 	private double priceAtBuy;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderLineProduct_fk", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product", nullable = false)
 	private Product product = null;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderLineOrder_fk", nullable = false)
+    @JoinColumn(name = "orderLines", nullable = false)
 	private Order order = null;
 
 	private int state;
