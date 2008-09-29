@@ -14,15 +14,20 @@ public class Order implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -8046227351655231729L;
-
+	
+	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-
+	
+	@OneToMany(mappedBy = "orderLines", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<OrderLine> orderLines = null;
 
 	private int state;
-
+	
+	@Column(length = 8)
 	private String totalPrice;
-
+	
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderAddress_fk", nullable = false)
 	private Address address = null;
 
 	/**
