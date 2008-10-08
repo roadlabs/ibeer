@@ -1,12 +1,29 @@
 package ecom.ibeer.entity.order; 
 
 import ecom.ibeer.entity.catalog.Product;
+import ecom.ibeer.entity.exceptions.ValidationException;
+
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 
 /** 
  */
 @Entity
 @Table(name="OrderLine")
+@NamedQuery(name = "allOrderLine", query = "select o FROM OrderLine o")
 public class OrderLine implements Serializable {
 
 	/**
@@ -35,7 +52,7 @@ public class OrderLine implements Serializable {
 	@PrePersist
 	@PreUpdate
 	private void validateData(){
-		if(quantity==null||quantity<0){
+		if(quantity<0){
 			throw new ValidationException("Invalid quantity for the order");
 		}
 	}

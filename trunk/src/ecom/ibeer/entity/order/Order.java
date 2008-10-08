@@ -3,13 +3,33 @@ package ecom.ibeer.entity.order;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Vector;
+
+import ecom.ibeer.entity.customer.Customer;
 
 import ecom.ibeer.entity.Address;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /** 
  */
 @Entity
 @Table(name="Order")
+@NamedQuery(name = "allOrder", query = "select o FROM Order o")
 public class Order implements Serializable {
 
 	/**
@@ -29,13 +49,13 @@ public class Order implements Serializable {
 	private Customer customer = null;
     
 	@OneToMany(mappedBy = "orderLines", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	private Collection<OrderLine> orderLines = null;
+	private Collection<OrderLine> orderLines = null; 
 
 	private int state;
 	
 	private float totalPrice;
 	
-    @OneToOne(fetch = FetchType.EAGER, nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_fk", nullable = false)
 	private Address address = null;
 
@@ -57,7 +77,7 @@ public class Order implements Serializable {
 		}else{
 			float price=0;
 			for(int i=0; i<orderLines.size(); i++){
-				price += orderLines.get(i).getPriceAtBuy();
+				price += ((Vector<OrderLine>)orderLines).get(i).getPriceAtBuy();
 			}
 			totalPrice = price;
 		}
@@ -173,7 +193,7 @@ public class Order implements Serializable {
 				"address of Order is : " + order.getAddress().toString() + "\n" +
 				"state of Order is : " + order.getState();
 		for (int i=0; i<order.getOrderLines().size(); i++){
-			s += "No."+i+" orderLine is : " + order.getOrderLines().get(i).toString() + "\n" +
+			s += "No."+i+" orderLine is : " + ((Vector)order.getOrderLines()).get(i).toString() + "\n";
 		}
 		return s;
 	}
