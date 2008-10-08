@@ -2,6 +2,14 @@ package ecom.ibeer.entity.customer;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Vector;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import ecom.ibeer.entity.catalog.Product;
 
@@ -9,7 +17,8 @@ import ecom.ibeer.entity.catalog.Product;
  * 
  */
 @Entity
-@Table(name="Customer")
+@Table(name="WishList")
+@NamedQuery(name = "allWishList", query = "select o FROM WishList o")
 public class WishList implements Serializable {
 
 	/**
@@ -49,9 +58,9 @@ public class WishList implements Serializable {
 	}
 	
 	public String toString(WishList wishList){
-		String s ;
+		String s = "" ;
 		for (int i=0; i<wishList.getProducts().size(); i++){
-			s += "No."+i+" product of wishList is : " + wishList.getProducts().get(i).toString() + "\n" +
+			s += "No."+i+" product of wishList is : " + ((Vector)wishList.getProducts()).get(i).toString() + "\n";
 		}
 		return s;
 	}

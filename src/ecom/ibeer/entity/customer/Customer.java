@@ -1,8 +1,27 @@
 package ecom.ibeer.entity.customer; 
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Vector;
 
 import ecom.ibeer.entity.Address;
+import ecom.ibeer.entity.exceptions.ValidationException;
+import ecom.ibeer.entity.order.Order;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 
 /** 
  */
@@ -34,7 +53,6 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy = "orders_fk", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Collection<Order> orders = null;
 
-	
 	@PrePersist
 	@PreUpdate
 	private void validateData(){
@@ -174,7 +192,7 @@ public class Customer implements Serializable {
 				"address of customer is : " + customer.getAddress() + "\n" +
 				"wishList of customer is : " + customer.getWishList();
 		for (int i=0; i<customer.getOrders().size(); i++){
-			s += "No."+i+" order is : " + customer.getOrders().get(i).toString() + "\n" +
+			s += "No."+i+" order is : " + ((Vector)customer.getOrders()).get(i).toString() + "\n";
 		}
 		return s;
 	}
